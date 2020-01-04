@@ -16,10 +16,11 @@ class QuotesSpider(scrapy.Spider):
             title = post.xpath('./div[contains(@class, "title")]/a/@title').get()
             unstripped_company = post.xpath('./div[contains(@class, "sjcl")]/div/span[contains(@class, "company")]//text()').getall()
             company = ''.join(unstripped_company).strip()
+            location = post.xpath('./div[contains(@class, "sjcl")]/*[contains(@class, "location")]//text()').get()
             yield {
                 'title': title,
-                'company': company
-                # 'location':
+                'company': company,
+                'location': location
                 # 'date': 
             } 
             
