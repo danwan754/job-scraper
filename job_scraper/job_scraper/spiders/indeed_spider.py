@@ -1,4 +1,5 @@
 import scrapy
+import re
 
 
 class QuotesSpider(scrapy.Spider):
@@ -10,18 +11,21 @@ class QuotesSpider(scrapy.Spider):
 
     def parse(self, response):
 
-        posts = response.xpath("//div[contains(@class, 'jobsearch-SerpJobCard') and contains(@class, 'unifiedRow')]")
+        # posts = response.xpath("//div[contains(@class, 'jobsearch-SerpJobCard') and contains(@class, 'unifiedRow')]")
+        posts = re.findall("\{jk:.*\}", response.xpath('//script[@type="text/javascript"][contains(text(), "var jobmap")]/text()').get())
 
         for post in posts:
-            title = post.xpath('./div[contains(@class, "title")]/a/@title').get()
-            unstripped_company = post.xpath('./div[contains(@class, "sjcl")]/div/span[contains(@class, "company")]//text()').getall()
-            company = ''.join(unstripped_company).strip()
-            location = post.xpath('./div[contains(@class, "sjcl")]/*[contains(@class, "location")]//text()').get()
-            date = post.xpath('./div[contains(@class, "jobsearch-SerpJobCard-footer")]//*[contains(@class, "date")]//text()').get()
+            post_id = re.search("(?<=\{jk:\').*(?=\',efccid)", post).group(0)
+            company = re.search("(?<=\cmp:\').*(?=\',cmpesc)", post).group(0)
+            title = re.search("(?<=title:\').*(?=\',locid)", post).group(0)
+            location = re.search("(?<=loc:\').*(?=\',country)", post).group(0)
+            # date = post.xpath('./div[contains(@class, "jobsearch-SerpJobCard-footer")]//*[contains(@class, "date")]//text()').get()
+            url = 'https://ca.indeed.com/viewjob?jk=' + post_id
             yield {
                 'title': title,
                 'company': company,
                 'location': location,
-                'date': date
+                # 'date': date,
+                'url': url
             } 
             
