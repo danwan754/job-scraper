@@ -1,1 +1,7 @@
 commands.txt
+__pycache__/
+exclude.csv
+indeed_ids_history.csv
+job_scraper/indeed.json
+job_scraper/job_scraper/__pycache__/
+job_scraper/job_scraper/spiders/__pycache__/
