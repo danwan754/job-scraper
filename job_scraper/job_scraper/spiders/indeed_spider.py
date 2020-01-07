@@ -1,6 +1,6 @@
 import scrapy
 import re
-
+import csv
 
 class QuotesSpider(scrapy.Spider):
     name = "indeed"
@@ -22,10 +22,10 @@ class QuotesSpider(scrapy.Spider):
             # date = post.xpath('./div[contains(@class, "jobsearch-SerpJobCard-footer")]//*[contains(@class, "date")]//text()').get()
             url = 'https://ca.indeed.com/viewjob?jk=' + post_id
             yield {
+                'id': post_id,
                 'title': title,
                 'company': company,
                 'location': location,
                 # 'date': date,
                 'url': url
-            } 
-            
+            }
