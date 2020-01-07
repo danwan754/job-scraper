@@ -2,6 +2,7 @@ import csv
 import json
 
 import filter
+import email
 
 '''
 Email a list of new job posts from Indeed. Applies filters to results.
@@ -19,4 +20,12 @@ post_list = filter.apply_filters(post_list)
 # print(post_list)
 
 
-# construct email
+# load email config
+config_dict = {}
+config_file_path = './config.json'
+with open(config_file_path, 'r') as json_file:
+    config_dict = json.load(json_file)
+
+# send email
+email.send_email(config_dict, post_list)
+
