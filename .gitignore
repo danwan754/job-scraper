@@ -1,9 +1,8 @@
-commands.txt
 __pycache__/
 *.pyc
 exclude.csv
 indeed_ids_history.csv
 config.json
-job_scraper/indeed.json
-job_scraper/job_scraper/__pycache__/
-job_scraper/job_scraper/spiders/__pycache__/
+indeed.json
+job_scraper/__pycache__/
+job_scraper/spiders/__pycache__/
