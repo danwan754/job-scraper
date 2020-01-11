@@ -8,8 +8,8 @@ import email_sender
 Email a list of new job posts from Indeed. Applies filters to results.
 '''
 
-recent_scraped_jobs_path = './job_scraper/indeed.json'
-history_ids_path = 'indeed_ids_history.csv'
+recent_scraped_jobs_path = './indeed.json'
+history_ids_path = './indeed_ids_history.csv'
 post_list = []
 
 # load the JSON from recently scraped jobs
@@ -18,8 +18,6 @@ with open(recent_scraped_jobs_path) as json_file:
 
 # apply filters to posts
 post_list = filter.apply_filters(post_list)
-# print(post_list)
-
 
 # load email config
 config_dict = {}

@@ -9,8 +9,8 @@ def apply_filters(posts):
     Returns the remaining list of dictionaries after filters are applied.
     '''
 
-    history_ids_path = 'indeed_ids_history.csv'
-    exclude_criteria_path = 'exclude.csv'
+    history_ids_path = './indeed_ids_history.csv'
+    exclude_criteria_path = './exclude.csv'
 
     # if history of IDs file does not exist, create it
     if not os.path.isfile(history_ids_path):
