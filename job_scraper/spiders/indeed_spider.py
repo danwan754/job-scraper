@@ -1,6 +1,7 @@
 import scrapy
 import re
 import csv
+import os
 
 class QuotesSpider(scrapy.Spider):
     name = "indeed"
@@ -12,6 +13,8 @@ class QuotesSpider(scrapy.Spider):
     def parse(self, response):
 
         # posts = response.xpath("//div[contains(@class, 'jobsearch-SerpJobCard') and contains(@class, 'unifiedRow')]")
+        
+        # find the script tag containing the embedded json
         posts = re.findall("\{jk:.*\}", response.xpath('//script[@type="text/javascript"][contains(text(), "var jobmap")]/text()').get())
 
         for post in posts:
