@@ -19,7 +19,7 @@ class QuotesSpider(scrapy.Spider):
 
         for post in posts:
             post_id = re.search("(?<=\{jk:\').*(?=\',efccid)", post).group(0)
-            company = re.search("(?<=\cmp:\').*(?=\',cmpesc)", post).group(0)
+            company = re.search("(?<=cmp:\').*(?=\',cmpesc)", post).group(0)
             title = re.search("(?<=title:\').*(?=\',locid)", post).group(0)
             location = re.search("(?<=loc:\').*(?=\',country)", post).group(0)
             # date = post.xpath('./div[contains(@class, "jobsearch-SerpJobCard-footer")]//*[contains(@class, "date")]//text()').get()
