@@ -37,8 +37,8 @@ Repeating runs will require a pre-step to remove the indeed.json output file:
 > rm indeed.json<br>
 > scrapy crawl indeed -o indeed.json<br>
 > python3 run.py<br>
-
-
+  
+   
 ## Setup task to run periodically on Windows Task Scheduler
 Setup to automatically and periodically scrape and receive emails on new job postings on Windows Task Scheduler.
 The *scrape_indeed.sh* script was written to be used as an argument in the new task creation.
@@ -53,8 +53,21 @@ In *scrape_indeed.sh*, replace the *\<full project path\>* with the absolute pat
 6) Click OK, and you may be prompted to enter your computer login credential which you will provide. Done.
 
 If there are new job postings, you should receive email during the trigger schedule that you selected.
+  
+  
+## Files of interest
+<b>config.py</b> : Required by user to fill sender and receiver email credentials in order to receive email of new job postings.<br>
+<b>email_sender.py</b> : Module that will compose and send the email.<br>
+<b>filter.py</b> : Module that filters out job posts that have been emailed out already. Also filters out companies.<br>
+<b>run.py</b> : Main script which should be run after the scrape script is run.<br>
+<b>scrape_indeed.sh</b> : Script to be used as argument in Windows Task Scheduler. (optional)<br>
+<b>/job_scraper/spiders/indeed_spider.py</b> : Scrape script that scrapes Indeed.com.<br>
 
-
+<b>exclude.csv</b> : CSV file containing company names to exclude in email.<br>
+<b>indeed_ids_history.csv</b> : CSV file containing job post IDs of all posts that were emailed out. Created on first run.<br>
+<b>indeed.json</b> : JSON file containing array of job post objects. This file is created by the scrape.<br>
+  
+  
 ## Possible Future Updates
 1) Take inputs: job search keywords, location keywords (currently it only search for developer jobs in Vancouver, BC)
 2) Crontab: easy crontab setup (currently made and tested for Task Scheduler on Windows)
