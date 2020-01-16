@@ -37,6 +37,13 @@ Repeating runs will require a pre-step to remove the indeed.json output file:
 > rm indeed.json<br>
 > scrapy crawl indeed -o indeed.json<br>
 > python3 run.py<br>
+
+#### Filter out companies
+To exclude job posts from certain companies, add the company names (exactly as they are spelled in an Indeed.com job post) to *exclude.csv*. Each name should be quoted and in it's own line, ex. :
+> "Amazing Hydro Tech, Inc."<br>
+> "Forreal Biotech"<br>
+> "Dancing Polar Bear, Int'l"<br>
+> "Super Duper StartUp"<br>
   
    
 ## Setup task to run periodically on Windows Task Scheduler
