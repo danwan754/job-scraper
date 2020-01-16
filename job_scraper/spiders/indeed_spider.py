@@ -1,7 +1,5 @@
 import scrapy
 import re
-import csv
-import os
 
 class QuotesSpider(scrapy.Spider):
     name = "indeed"
