@@ -5,7 +5,7 @@ class QuotesSpider(scrapy.Spider):
     name = "indeed"
 
     start_urls = [
-        'https://ca.indeed.com/jobs?q=developer&l=Vancouver%2C+BC&fromage=last'
+        'https://ca.indeed.com/jobs?q=developer&l=Vancouver%2C+BC&sort=date'
     ]
 
     def parse(self, response):
