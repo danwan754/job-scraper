@@ -1,5 +1,6 @@
 __pycache__/
 *.pyc
+venv/
 exclude.csv
 indeed_ids_history.csv
 config.json
